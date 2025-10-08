@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/Users/josed/OneDrive/Escritorio/Universidad/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
