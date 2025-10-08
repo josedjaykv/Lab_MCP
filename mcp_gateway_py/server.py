@@ -61,12 +61,16 @@ async def main():
     project_root = os.path.dirname(root)                # raíz del proyecto
 
     ventas_path  = os.path.join(project_root, "mcp_ventas_py",  "server.py")
-    pedidos_path = os.path.join(project_root, "mcp_pedidos_py", "server.py")
+
+    node_exe = "node"
+    # pedidos_path = os.path.join(project_root, "mcp_pedidos_py", "server.py")
+    pedidos_js = os.path.join(project_root, "mcp_pedidos_node", "server.mjs")
 
     env = dict(os.environ)
 
     ventas = Backend([py, "-u", ventas_path], cwd=os.path.dirname(ventas_path), env=env)
-    pedidos = Backend([py, "-u", pedidos_path], cwd=os.path.dirname(pedidos_path), env=env)
+    # pedidos = Backend([py, "-u", pedidos_path], cwd=os.path.dirname(pedidos_path), env=env)
+    pedidos = Backend([node_exe, pedidos_js], cwd=os.path.dirname(pedidos_js), env=env)
 
     await ventas.start()
     await pedidos.start()
